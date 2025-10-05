@@ -1,0 +1,131 @@
+# Copyright (c) 2025 ByteDance Ltd. and/or its affiliates
+# SPDX-License-Identifier: MIT
+
+import json
+from pathlib import Path
+import os
+from dataclasses import dataclass
+
+from agents.utils.typing_compat import override
+from agents.config.types import ContextLimits
+
+# data class for model parameters
+@dataclass
+class ModelParameters:
+    """Model parameters for a model provider."""
+    model: str
+    api_key: str
+    max_tokens: int
+    temperature: float
+    top_p: float
+    top_k: int
+    parallel_tool_calls: bool
+    max_retries: int
+    thinking: bool
+    base_url: str | None = None
+    api_version: str | None = None
+    tool_choice: str | None = None
+    reasoning_effort: str | None = None
+
+
+@dataclass
+class LakeviewConfig:
+    """Configuration for Lakeview."""
+    model_provider: str
+    model_name: str
+
+
+@dataclass
+class AgentConfig:
+    """Configuration for Agent."""
+    default_provider: str
+    agent_type: str
+    context_tools: list[str]
+    env_tools: list[str]
+    model_providers: dict[str, ModelParameters]
+    lakeview_config: LakeviewConfig | None = None
+    enable_lakeview: bool = True
+    
+    def __init__(self, config_file: str = "trae_config.json"):
+        config_path = Path(config_file)
+        if config_path.exists():
+            try:
+                with open(config_path, 'r') as f:
+                    self._config = json.load(f)
+            except Exception as e:
+                print(f"Warning: Could not load config file {config_file}: {e}")
+                self._config = {}
+        else:
+            self._config = {}
+
+        self.default_provider = self._config.get("default_provider", "anthropic")
+        self.model_providers = {}
+        self.enable_lakeview = self._config.get("enable_lakeview", True)
+        self.context_tools = self._config.get("context_tools", [])
+        self.env_tools = self._config.get("env_tools", [])
+        self.context_limits = ContextLimits(
+            max_tokens=self._config.get("context_limits", {}).get("max_tokens", 2000),
+            summary_threshold=self._config.get("context_limits", {}).get("summary_threshold", 100000),
+            context_length=self._config.get("context_limits", {}).get("context_length", 200000),
+            max_internal_action_times=self._config.get("context_limits", {}).get("max_internal_action_times", -1),
+        )
+
+        if len(self._config.get("model_providers", [])) == 0:
+            self.model_providers = {
+                "anthropic": ModelParameters(
+                    model="claude-sonnet-4-20250514",
+                    api_key="",
+                    max_tokens=4096,
+                    temperature=0.5,
+                    top_p=1,
+                    top_k=0,
+                    parallel_tool_calls=False,
+                    max_retries=10,
+                ),
+            }
+        else:
+            for provider in self._config.get("model_providers", {}).keys():
+                provider_config: dict[str, str | int | float | bool] = self._config.get("model_providers", {}).get(provider, {})
+                self.model_providers[provider] = ModelParameters(
+                    model=str(provider_config.get("model", "")),
+                    api_key=str(provider_config.get("api_key", "")),
+                    max_tokens=int(provider_config.get("max_tokens", 1000)),
+                    temperature=float(provider_config.get("temperature", 0.5)),
+                    top_p=float(provider_config.get("top_p", 1)),
+                    top_k=int(provider_config.get("top_k", 0)),
+                    max_retries=int(provider_config.get("max_retries", 10)),
+                    parallel_tool_calls=bool(provider_config.get("parallel_tool_calls", False)),
+                    base_url=str(provider_config.get("base_url")) if "base_url" in provider_config else None,
+                    api_version=str(provider_config.get("api_version")) if "api_version" in provider_config else None,
+                )
+
+        if "lakeview_config" in self._config:
+            self.lakeview_config = LakeviewConfig(
+                model_provider=str(self._config.get("lakeview_config", {}).get("model_provider", "anthropic")),
+                model_name=str(self._config.get("lakeview_config", {}).get("model_name", "claude-sonnet-4-20250514")),
+            )
+
+        return
+
+    @override
+    def __str__(self) -> str:
+        return f"AgentConfig(default_provider={self.default_provider}, model_providers={self.model_providers})"
+
+
+def load_config(config_file: str = "trae_config.json") -> AgentConfig:
+    """Load configuration from file."""
+    return AgentConfig(config_file)
+
+
+def resolve_config_value(cli_value: int | str | float | None, config_value: int | str | float | None, env_var: str | None = None) -> int | str | float | None:
+    """Resolve configuration value with priority: CLI > ENV > Config > Default."""
+    if cli_value is not None:
+        return cli_value
+
+    if env_var and os.getenv(env_var):
+        return os.getenv(env_var)
+
+    if config_value is not None:
+        return config_value
+
+    return None

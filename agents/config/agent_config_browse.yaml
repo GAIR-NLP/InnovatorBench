@@ -1,0 +1,73 @@
+# Agent Config File
+agent_type: "react"
+
+# Default Model Provider
+default_provider: "claude-sonnet-4"
+
+# Context Limits
+context_limits:
+  max_tokens: 8192
+  summary_threshold: 100000
+  context_length: 128000
+  max_internal_action_times: -1
+
+# Environment Tools
+env_tools:
+  - name: "RUN"
+  - name: "EDIT"
+  - name: "CREATE_SESSION"
+  - name: "LIST_SESSIONS"
+  - name: "INPUT_IN_SESSION"
+  - name: "GET_SESSION_OUTPUT"
+  - name: "CHECK_SESSION_IDLE"
+  - name: "CLEAR_SESSION_BUFFER"
+  - name: "CLOSE_SESSION"
+  - name: "CLOSE_ALL_SESSIONS"
+  - name: "KILL_SESSION_PROCESSES"
+  - name: "OPEN_FILE"
+  - name: "FILE_GOTO_LINE"
+  - name: "FILE_SCROLL_DOWN"
+  - name: "FILE_SCROLL_UP"
+  - name: "CREATE_FILE"
+  - name: "SEARCH_DIR"
+  - name: "SEARCH_FILE"
+  - name: "FIND_FILE"
+  - name: "LIST_FILES"
+  - name: "GET_FILE_INFO"
+  - name: "THINK"
+  - name: "WEB_SEARCH"
+  - name: "WEB_BROWSE"
+  - name: "WEB_PAGE_GOTO_LINE"
+  - name: "WEB_PAGE_SCROLL_DOWN"
+  - name: "WEB_PAGE_SCROLL_UP"
+  - name: "WEB_PAGE_SEARCH"
+  - name: "WEB_PAGE_SEARCH_NEXT"
+  - name: "WEB_PAGE_GET_LINKS"
+  - name: "SLEEP"
+  # - name: "PARSE_PDF"
+  # - name: "PARSE_DOCX"
+  # - name: "PARSE_LATEX"
+  # - name: "PARSE_AUDIO"
+  - name: "PARSE_IMAGE"
+  - name: "PARSE_VIDEO"
+  # - name: "PARSE_PPTX"
+  - name: "EVAL"
+  - name: "FINISH"  # MUST EXIST, FOR ENDING TASK
+  # - name: "VIEW_HINT"
+
+# Max Steps
+max_steps: 50
+
+# Model Providers Config
+model_providers:
+  claude-sonnet-4:
+    model: "anthropic/claude-sonnet-4"
+    api_key: "YOUR_API_KEY"
+    base_url: "https://openrouter.ai/api/v1"
+    api_version: null
+    max_tokens: 8192
+    temperature: 1.0
+    top_p: 1.0
+    top_k: 0
+    parallel_tool_calls: false
+    max_retries: 4

@@ -1,0 +1,57 @@
+task_name: "<task_name>"  # task_name
+launch_type: "direct_http"  # ["direct_http", "load_checkpoint"]
+workspace: "/workspace"  # workspace path, default is "/workspace"
+max_working_time: 172800
+start_time: null # ["now", null]
+max_steps: 5000
+save_freq: -1 # -1 means no save, you can also set it to a number to save checkpoints.
+resume_from_path: null # [path, null]
+
+tokenizer: "Qwen/Qwen2.5-7B-Instruct"  # we use Qwen/Qwen2.5-7B-Instruct as default tokenizer to calcute the token usage.
+
+# train
+checkpoint_base_path: "<base_dir_path_to_save_checkpoints>"  # base path to save checkpoints, the checkpoint will be saved in <checkpoint_base_path>/workspace_backup/workspace_{task_name}_{start_time.strftime('%Y-%m-%d.%H:%M:%S')}_step{max_steps}_{model_name}"
+workspace_dataset_path: "<base_dir_path_to_load_dataset>"  # base path to load workspace from the InnovatorBench dataset or you own dataset.
+actual_workspace: "<symbolic_link_to_the_real_workspace_of_agent>" # If the folder is start with `workspace`, it will cover the original folder, otherwise, it will generate a new folder under this folder. Too many workspace may cause large storge pressure.
+
+env_vars: null  # null or dict, like "OPENAI_API_KEY": "sk-xxx"
+cmd_proxy_url: null # cmd_proxy_url, default is "http://<cmd_proxy_url>:8101". If your CPU or LOCALHOST_CPU can directly connet to GPU, than you set it to null.
+computer_pool:  # computer_pool, at least one computer is required
+  - computer_ip: "<computer_ip>"
+    computer_port: 8123
+    computer_type: "gpu"
+    available: true
+  - computer_ip: "<computer_ip>"
+    computer_port: 8123
+    computer_type: "localhost_cpu"
+    available: true
+
+# docker
+default_shell: "/bin/bash"  # default shell, default is "/bin/bash"
+default_http_port: null  # default http port, default is null
+
+# ParserOperations, only used when you want to parse audio, image, and video.
+openai_api_key: null
+openai_base_url: null
+
+# evaluation
+eval_workspace: "./evaluations"  # base path to load evaluations, <base_dir_path_to_load_evaluations>/<task_name> is the evaluation path. Usually, it's in evaluation folder (../../../evaluation)
+max_eval_time: 5000
+
+# search engine configuration
+search_engine: "google" # ["google", "bing"], select one search engine, the other's api key can set to empty.
+serper_api_key: "<search_engine_api_key>"  # serper_api_key is required for Google search
+azure_bing_search_subscription_key: "<azure_bing_search_subscription_key>"  # azure_bing_search_subscription_key is required for Bing search
+search_max_top_k: 100  # search max top k, default is 100
+search_region: "us"  # search region, default is "us"
+search_lang: "en"  # search language, default is "en"
+azure_bing_search_mkt: "en-US"  # azure_bing_search_mkt, default is "en-US"
+search_cache_dir: "<cache_dir_to_save_search_cache>"  # cache dir to save search cache, all tasks can share the same cache dir.
+search_cache_duration_days: 1  # search cache duration in days, default is 1
+
+# web browsing configuration
+web_server_host: "<web_server_host>"  # web server host
+web_server_port: 8124  # web server port
+web_proxy_url: ""  # web proxy url, default is ""
+web_cache_dir: "<cache_dir_to_save_web_cache>"  # cache dir to save web cache, all tasks can share the same cache dir.
+web_cache_duration_days: 1  # web cache duration in days, default is 1

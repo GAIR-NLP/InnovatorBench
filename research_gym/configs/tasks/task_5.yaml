@@ -1,0 +1,57 @@
+task_name: "task_5"
+launch_type: "direct_http"  # ["direct_http", "load_checkpoint"]
+workspace: "/workspace"
+max_working_time: 21600  # Task 5 requires 6 hours to run. If you want to replicate our experiment, you should not modify this param.
+start_time: "now"
+max_steps: 4000
+save_freq: -1 # -1 means no save, you can also set it to a number to save checkpoints.
+resume_from_path: null # [path, null]
+
+tokenizer: "Qwen/Qwen2.5-7B-Instruct"
+
+# train
+checkpoint_base_path: "<base_dir_path_to_save_checkpoints>"  # base path to save checkpoints, the checkpoint will be saved in <checkpoint_base_path>/workspace_backup/workspace_{task_name}_{start_time.strftime('%Y-%m-%d.%H:%M:%S')}_step{max_steps}_{model_name}"
+workspace_dataset_path: "<base_dir_path_to_load_dataset>"  # base path to load workspace from the InnovatorBench dataset or you own dataset.
+actual_workspace: "<symbolic_link_to_the_real_workspace_of_agent>" # If the folder is start with `workspace`, it will cover the original folder, otherwise, it will generate a new folder under this folder. Too many workspace may cause large storge pressure.
+
+env_vars: null
+cmd_proxy_url: "http://<cmd_proxy_url>:8101"  # cmd_proxy_url, default is "http://<cmd_proxy_url>:8101". If your CPU or LOCALHOST_CPU can directly connet to GPU, than you set it to null.
+computer_pool:  # computer_pool. This task requires a 8x 80GB-GPU server and a CPU server to run.
+  - computer_ip: "<computer_ip>"
+    computer_port: 8123
+    computer_type: "gpu"
+    available: true
+  - computer_ip: "<computer_ip>"
+    computer_port: 8123
+    computer_type: "localhost_cpu"
+    available: true
+
+# docker
+default_shell: "/bin/bash"
+default_http_port: null
+
+# openai
+openai_api_key: null
+openai_base_url: null
+
+# evaluation
+eval_workspace: "./evaluations"
+max_eval_time: 5000
+
+# search engine configuration
+search_engine: "google"
+serper_api_key: "<search_engine_api_key>"
+azure_bing_search_subscription_key: ""
+search_max_top_k: 100
+search_region: "us"
+search_lang: "en"
+azure_bing_search_mkt: "en-US"
+search_cache_dir: "<base_dir_path_to_save_search_cache>"
+search_cache_duration_days: 1
+
+# web browsing configuration
+web_server_host: "<web_server_host>"
+web_server_port: 8124
+web_proxy_url: ""
+web_cache_dir: "<base_dir_path_to_save_web_cache>"
+web_cache_duration_days: 1 
