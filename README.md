@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/badge/Python-3.10-blue.svg" alt="Python Version">
   <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
   <img src="https://img.shields.io/badge/Status-Active-yellow.svg" alt="Status">
+  <img src="https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Dataset-blue" alt="HuggingFace Dataset">
 </p>
 
 ## 🌟 Recent News
