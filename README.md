@@ -1,11 +1,21 @@
 # InnovatorBench: Evaluating Agents' Ability to Conduct Innovative LLM Research
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10-blue.svg" alt="Python Version">
-  <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-  <img src="https://img.shields.io/badge/Status-Active-yellow.svg" alt="Status">
-  <img src="https://img.shields.io/badge/%F0%9F%A4%97%20HuggingFace-Dataset-blue" alt="HuggingFace Dataset">
-</p>
+<div align="center">
+  
+  <!-- arXiv 论文 -->
+  <a href="https://arxiv.org/abs/2510.27598">
+    <img alt="arXiv"
+         src="https://img.shields.io/badge/ARXIV-2510.27598-red?style=for-the-badge&logo=arxiv&logoColor=%23B31B1B&logoSize=30&labelColor=lightgrey" />
+  </a>
+
+  <!-- Hugging Face 数据集 -->
+  <a href="https://huggingface.co/datasets/GAIR/InnovatorBench">
+    <img alt="HF Datasets (InnovatorBench)"
+         src="https://img.shields.io/badge/HF%20Datasets-InnovatorBench-violet?style=for-the-badge&logo=huggingface&logoColor=%23FFD21E&logoSize=30" />
+  </a>
+
+</div>
+
 
 ## 🌟 Recent News
 
