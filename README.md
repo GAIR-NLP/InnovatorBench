@@ -191,10 +191,14 @@ We thank the following open source projects and communities:
 If you use InnovatorBench in your research, please cite:
 
 ```bibtex
-@misc{innovatorbench_2025,
+@misc{wu2025innovatorbenchevaluatingagentsability,
       title={InnovatorBench: Evaluating Agents' Ability to Conduct Innovative LLM Research}, 
-      url={https://github.com/GAIR-NLP/InnovatorBench}, 
-      author={The InnovatorBench Team}, year={2025}, month={Sept}
+      author={Yunze Wu and Dayuan Fu and Weiye Si and Zhen Huang and Mohan Jiang and Keyu Li and Shijie Xia and Jie Sun and Tianze Xu and Xiangkun Hu and Pengrui Lu and Xiaojie Cai and Lyumanshan Ye and Wenhong Zhu and Yang Xiao and Pengfei Liu},
+      year={2025},
+      eprint={2510.27598},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2510.27598}, 
 }
 ```
 
