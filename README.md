@@ -158,11 +158,6 @@ InnovatorBench/
 | **Scaffold Construction** | 36.63           | 37.74      | **60.07**   | **60.07**  | 3.33        | 3.33       | 3.33        | 3.33       |
 | **Weighted Average**      | **24.01**       | **24.54**  | 12.04       | 12.52      | 11.85       | 13.35      | 5.35        | 5.45       |
 
-## 📚 Resources
-
-### Research Papers
-- [InnovatorBench: Evaluating Agents' Ability to Conduct Innovative LLM Research](./resources/InnovatorBench.pdf)
-
 
 ## 🤝 Contributing
 

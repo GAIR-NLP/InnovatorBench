@@ -1,15 +1,3 @@
-ui/node_modules
-ui/venv/
-ui/engineer.db
-ui/server.txt
-
-gym_workspace/data/
-gym_workspace/conda/
-evaluations/*/data/
-storage/task_0024_1/data/datasets
-claude_task*
-gym_backup/*
-
 # Node.js (for UI components)
 node_modules/
 npm-debug.log*
@@ -212,16 +200,3 @@ cython_debug/
 .cursorindexingignore
 
 .DS_Store
-
-dc_agents/
-Deep Cognition Agent 中 LLM 的调用与管理机制.md
-PROJECT_OVERVIEW.md
-DEVELOPMENT_PROGRESS.md
-GEMINI.md
-.cursor
-脚手架搭建.*
-legacy/
-react_repo_temp/
-trae_agent_temp/
-shared_workspace/
-refer/

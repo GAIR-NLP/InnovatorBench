@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Innovator · InnovatorBench Benchmark</title>
+  <meta name="description"
+    content="AI-Innovator is the home of InnovatorBench, a benchmark suite for evaluating research-ready AI agents. Explore docs, registry, leaderboard, news, and related papers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a class="brand" href="#top">
+        <span class="brand__symbol">AI</span>
+        <span class="brand__text"><strong>Innovator</strong> Benchmark Suite</span>
+      </a>
+      <ul class="nav__links">
+        <li>
+          <a class="nav__link" href="#docs">Docs ▾</a>
+          <div class="nav__dropdown" aria-label="Docs menu">
+            <a href="#tasks">Tasks</a>
+            <a href="#research-gym">ResearchGym</a>
+            <a href="#hai">HAI</a>
+            <a href="#models">Models</a>
+          </div>
+        </li>
+        <li><a class="nav__link" href="#registry">Registry</a></li>
+        <li><a class="nav__link" href="#leaderboard">Leaderboard</a></li>
+        <li><a class="nav__link" href="#news">News</a></li>
+        <li><a class="nav__link" href="#papers">Related Papers</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero__content">
+      <span class="hero__tagline">
+        <span></span>
+        InnovatorBench Benchmark Suite
+      </span>
+      <h1 class="hero__title">
+        Accelerate innovative LLM research with agent-ready infrastructure.
+      </h1>
+      <p class="hero__subtitle">
+        AI-Innovator brings together experimental tasks, evaluation tooling,
+        and Human-Agent Interfaces to measure an agent’s ability to produce
+        novel research-grade insights.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#docs">Explore Docs</a>
+        <a class="btn btn--ghost" href="#leaderboard">View Leaderboard</a>
+      </div>
+    </div>
+    <div class="hero__grid" aria-hidden="true">
+      <div class="hero__grid__content">
+        <div class="hero__grid__row">
+          <div class="hero-card">
+            <strong>20 research tasks</strong>
+            Curated from InnovatorBench 2025 technical report and partner
+            datasets.
+          </div>
+          <div class="hero-card">
+            <strong>ResearchGym</strong>
+            Sandbox your custom agents with Dockerized tools &amp; evaluation
+            loops.
+          </div>
+        </div>
+        <div class="hero__grid__row">
+          <div class="hero-card">
+            <strong>HAI console</strong>
+            Observe decisions, inject human feedback, and replay trajectories.
+          </div>
+          <div class="hero-card">
+            <strong>Live metrics</strong>
+            Standardized scoring across creativity, rigor, and reproducibility.
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="docs">
+      <div class="section__header">
+        <h2>Docs</h2>
+        <p>
+          Everything you need to reproduce InnovatorBench results and plug in
+          your own research agents. Each task references the paper that
+          inspired its evaluation protocol.
+        </p>
+      </div>
+
+      <div class="docs__matrix">
+        <div class="docs__matrix__row">
+          <article class="docs__card card--highlight" id="tasks">
+            <h3>Tasks</h3>
+            <p>
+              6 thematic tracks distilled from the InnovatorBench 2025 report.
+              Each task links the benchmark objective to its source paper.
+            </p>
+            <ul class="docs__tasks">
+              <li>
+                <strong>Task 01 · Data Construction Studio</strong>
+                <span>Contribution: InnovatorBench Technical Report (2025), Sec.
+                  3.1 — building synthetic corpora for RLHF.</span>
+              </li>
+              <li>
+                <strong>Task 02 · Data Filtering Pipeline</strong>
+                <span>Contribution: InnovatorBench Technical Report (2025), Sec.
+                  3.2 — adaptive curation of noisy research datasets.</span>
+              </li>
+              <li>
+                <strong>Task 03 · Data Augmentation Lab</strong>
+                <span>Contribution: InnovatorBench Technical Report (2025), Sec.
+                  3.3 — creativity-focused augmentation exercises.</span>
+              </li>
+              <li>
+                <strong>Task 04 · Loss Function Design</strong>
+                <span>Contribution: InnovatorBench Technical Report (2025), Sec.
+                  4.1 — innovation in custom optimization strategies.</span>
+              </li>
+              <li>
+                <strong>Task 05 · Reward Engineering Workshop</strong>
+                <span>Contribution: InnovatorBench Technical Report (2025), Sec.
+                  4.2 — human-aligned scoring functions for agents.</span>
+              </li>
+              <li>
+                <strong>Task 06 · Scaffold Construction Studio</strong>
+                <span>Contribution: InnovatorBench Technical Report (2025), Sec.
+                  5 — multi-stage experiment orchestration.</span>
+              </li>
+            </ul>
+          </article>
+          <article class="docs__card" id="research-gym">
+            <h3>ResearchGym</h3>
+            <p>
+              Container-based execution layer mirroring the TBench research
+              playground. Launch baseline agents or register a custom agent
+              entry point with a YAML config.
+            </p>
+            <ul class="card__list">
+              <li>Dockerized tool stacks (search, browsing, compute).</li>
+              <li>
+                Task manifests &lt;code&gt;research_gym/configs/tasks/*.yaml&lt;/code&gt;.
+              </li>
+              <li>
+                Custom agent contracts via
+                &lt;code&gt;agents/config/agent_config.yaml&lt;/code&gt;.
+              </li>
+              <li>Replay &amp; checkpoint support, similar to TerminalBench.</li>
+            </ul>
+          </article>
+          <article class="docs__card" id="hai">
+            <h3>HAI · Human-Agent Interface</h3>
+            <p>
+              Observe high-level reasoning traces, annotate agent behaviors,
+              and inject corrective signals mid-run.
+            </p>
+            <ul class="card__list">
+              <li>Rich trace viewer with step-wise provenance.</li>
+              <li>Live prompts &amp; human override capabilities.</li>
+              <li>Session exports for research reproducibility.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="docs__matrix__row">
+          <article class="docs__card" id="models">
+            <h3>Models (Coming Soon)</h3>
+            <p>
+              Tracking foundation models evaluated on InnovatorBench with a
+              unified API surface. Register interest via the Registry section.
+            </p>
+            <ul class="card__list">
+              <li>Unified SDK for OpenAI, Anthropic, Qwen, and GLM clients.</li>
+              <li>Adapters for local inference endpoints.</li>
+              <li>Reproducible model cards with evaluation summaries.</li>
+            </ul>
+          </article>
+          <article class="docs__card">
+            <h3>Evaluation Protocols</h3>
+            <p>
+              Re-use InnovatorBench’s scoring rubrics and integrate with your
+              CI for regression tracking.
+            </p>
+            <ul class="card__list">
+              <li>Creativity, rigor, reproducibility, and timeliness metrics.</li>
+              <li>JSON-based score reporters for automation.</li>
+              <li>Comparison scripts that mirror leaderboard logic.</li>
+            </ul>
+          </article>
+          <article class="docs__card">
+            <h3>Get Started Quickly</h3>
+            <p>
+              Follow the README setup instructions or use the one-command
+              bootstrap scripts in &lt;code&gt;scripts/&lt;/code&gt; (ETA).
+            </p>
+            <ul class="card__list">
+              <li>Environment provisioning via Conda / Docker.</li>
+              <li>Sample agent configs with minimal dependencies.</li>
+              <li>CLI helpers for launching benchmark runs.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="registry">
+      <div class="section__header">
+        <h2>Registry</h2>
+        <p>
+          Discover production-ready agents, tool adapters, datasets, and
+          playbooks built on top of InnovatorBench.
+        </p>
+      </div>
+      <div class="grid grid--cols-3">
+        <article class="card">
+          <p class="card__eyebrow">Agents</p>
+          <h3 class="card__title">Reference Implementations</h3>
+          <p class="card__body">
+            Start with our ReAct baseline or browse community submissions to
+            find an agent that matches your compute budget.
+          </p>
+          <ul class="card__list">
+            <li>ReAct Researcher (official baseline).</li>
+            <li>Browsing-Augmented Analyst (community).</li>
+            <li>Code-Centric Innovator (beta).</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="card__eyebrow">Toolchains</p>
+          <h3 class="card__title">Plug-and-Play Integrations</h3>
+          <p class="card__body">
+            Each tool adapter is versioned with clear capability contracts and
+            sample invocations.
+          </p>
+          <ul class="card__list">
+            <li>Web browsing with screenshot capture.</li>
+            <li>Paper parsing &amp; citation extraction.</li>
+            <li>Experiment manager &amp; plotting utilities.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="card__eyebrow">Datasets</p>
+          <h3 class="card__title">Research-Grade Benchmarks</h3>
+          <p class="card__body">
+            Access curated workspaces, evaluation corpora, and incremental
+            updates synced with Hugging Face releases.
+          </p>
+          <ul class="card__list">
+            <li>InnovatorBench Dataset v1.0.</li>
+            <li>Partnered RLHF corpora (private beta).</li>
+            <li>Community-contributed scaffolds.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="leaderboard">
+      <div class="section__header">
+        <h2>Leaderboard</h2>
+        <p>
+          A live snapshot of leading agents across all InnovatorBench tracks.
+          Submit your model via the Registry to appear in the next refresh.
+        </p>
+      </div>
+
+      <div class="leaderboard-container">
+        <div class="leaderboard-note">
+          <p><strong>Note:</strong> submissions must use innovatobench-core==0.1.1</p>
+          <code>ib run -d innovatobench-core==0.1.1 -a "&lt;agent-name&gt;" -m "&lt;model-name&gt;"</code>
+        </div>
+
+        <div class="leaderboard-table-wrapper">
+          <table class="leaderboard">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Agent</th>
+                <th>Model</th>
+                <th>Date</th>
+                <th>Agent Org</th>
+                <th>Model Org</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Droid</td>
+                <td>claude-opus-4-1</td>
+                <td>2025-09-24</td>
+                <td>Factory</td>
+                <td>Anthropic</td>
+                <td><strong>58.8%± 0.9</strong></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>OB-1</td>
+                <td>Multiple</td>
+                <td>2025-09-10</td>
+                <td>OpenBlock</td>
+                <td>Multiple</td>
+                <td><strong>56.7%± 0.6</strong></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Ante</td>
+                <td>claude-sonnet-4</td>
+                <td>2025-09-30</td>
+                <td>Antigma Labs</td>
+                <td>Anthropic</td>
+                <td><strong>54.8%± 1.5</strong></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Droid</td>
+                <td>gpt-5</td>
+                <td>2025-09-24</td>
+                <td>Factory</td>
+                <td>OpenAI</td>
+                <td><strong>52.5%± 2.1</strong></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Warp</td>
+                <td>Multiple</td>
+                <td>2025-06-23</td>
+                <td>Warp</td>
+                <td>Anthropic</td>
+                <td><strong>52.0%± 1.0</strong></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Terminus 2</td>
+                <td>claude-sonnet-4-5</td>
+                <td>2025-08-05</td>
+                <td>Stanford</td>
+                <td>Anthropic</td>
+                <td><strong>51.0%± 0.8</strong></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Droid</td>
+                <td>claude-sonnet-4</td>
+                <td>2025-09-24</td>
+                <td>Factory</td>
+                <td>Anthropic</td>
+                <td><strong>50.5%± 1.4</strong></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Chatrm</td>
+                <td>claude-sonnet-4</td>
+                <td>2025-09-10</td>
+                <td>Chatrm</td>
+                <td>Anthropic</td>
+                <td><strong>49.3%± 1.3</strong></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Goose</td>
+                <td>claude-4-opus</td>
+                <td>2025-09-03</td>
+                <td>Block</td>
+                <td>Anthropic</td>
+                <td><strong>45.3%± 1.5</strong></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Engine Labs</td>
+                <td>claude-4-sonnet</td>
+                <td>2025-07-14</td>
+                <td>Engine Labs</td>
+                <td>Anthropic</td>
+                <td><strong>44.8%± 0.8</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="leaderboard-footer">
+          <p>Results in this leaderboard correspond to innovatobench-core==0.1.1.</p>
+          <p>Follow our <a href="#registry">submission guide</a> to add your agent or model to the leaderboard.</p>
+          <p>A InnovatorBench team member ran the evaluation and verified the results.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="news">
+      <div class="section__header">
+        <h2>News</h2>
+        <p>
+          Track the latest milestones in InnovatorBench. Subscribe to updates
+          via the Registry to receive early-access calls for submissions.
+        </p>
+      </div>
+      <div class="news-feed">
+        <article class="news-item">
+          <time datetime="2025-10">Oct 2025</time>
+          <strong>Project launch with InnovatorBench core architecture.</strong>
+          <p>
+            Released the first wave of research tasks, evaluation scripts, and
+            baseline agents.
+          </p>
+        </article>
+        <article class="news-item">
+          <time datetime="2025-11">Continuous Updates</time>
+          <strong>New research tasks &amp; agent submissions welcome.</strong>
+          <p>
+            Iteratively improving ResearchGym coverage, expanding HAI features,
+            and onboarding community tool adapters.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="papers">
+      <div class="section__header">
+        <h2>Related Papers</h2>
+        <p>
+          Explore the foundations behind InnovatorBench and companion
+          benchmarks. Use the quick navigation to jump to each paper’s details.
+        </p>
+      </div>
+
+      <nav class="papers-nav" aria-label="Related papers navigation">
+        <a href="#paper-innovatorbench">InnovatorBench Technical Report</a>
+        <a href="#paper-swebench">SWE-bench</a>
+        <a href="#paper-scienceagentbench">ScienceAgentBench</a>
+        <a href="#paper-rexbench">RExBench</a>
+        <a href="#paper-mlbench">ML-Bench</a>
+      </nav>
+
+      <article class="paper-card" id="paper-innovatorbench">
+        <h3>InnovatorBench: Evaluating Agents' Ability to Conduct Innovative LLM Research (2025)</h3>
+        <p>
+          Introduces the InnovatorBench benchmark, ResearchGym execution
+          environment, and the HAI console for human-in-the-loop evaluation.
+        </p>
+        <p>
+          Highlights multi-stage research tasks, standardized scoring, and
+          baseline agent implementations.
+        </p>
+        <a href="../resources/InnovatorBench.pdf" target="_blank" rel="noopener">Read the technical report →</a>
+      </article>
+
+      <article class="paper-card" id="paper-swebench">
+        <h3>SWE-bench: Can Language Models Resolve Real-World GitHub Issues? (2023)</h3>
+        <p>
+          Establishes a benchmark for autonomous software engineering agents,
+          offering inspiration for InnovatorBench’s scaffold construction track.
+        </p>
+        <a href="https://arxiv.org/abs/2310.06770" target="_blank" rel="noopener">Visit paper homepage →</a>
+      </article>
+
+      <article class="paper-card" id="paper-scienceagentbench">
+        <h3>ScienceAgentBench: Evaluating Scientific Research Agents (2024)</h3>
+        <p>
+          Focuses on scientific literature reasoning; its evaluation protocols
+          influenced InnovatorBench’s data filtering and augmentation tasks.
+        </p>
+        <a href="https://github.com/GAIR-NLP/ScienceAgentBench" target="_blank" rel="noopener">Visit project page →</a>
+      </article>
+
+      <article class="paper-card" id="paper-rexbench">
+        <h3>RExBench: Research Execution Benchmark for LLM Agents (2024)</h3>
+        <p>
+          Benchmarks long-horizon research execution. InnovatorBench extends
+          these ideas with human feedback interfaces and richer tooling.
+        </p>
+        <a href="https://github.com/GAIR-NLP/RExBench" target="_blank" rel="noopener">Visit project page →</a>
+      </article>
+
+      <article class="paper-card" id="paper-mlbench">
+        <h3>ML-Bench: Benchmarking Machine Learning Agents on Kaggle Tasks (2024)</h3>
+        <p>
+          Evaluates agents on applied ML competitions. Provides a contrastive
+          baseline for InnovatorBench’s open-ended research objectives.
+        </p>
+        <a href="https://github.com/ml-bench/ML-Bench" target="_blank" rel="noopener">Visit project page →</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <span>© 2025 InnovatorBench Team · GAIR-NLP.</span>
+      <span>Inspired by the aesthetics of TBench.</span>
+    </div>
+    <span class="footer__small">Looking to contribute? Visit the Registry section or open an issue in
+      the GitHub repository.</span>
+  </footer>
+</body>
+
+</html>
