@@ -18,7 +18,7 @@
 
 
 ## 🌟 Recent News
-
+- **2026.01** - [Our paper](https://openreview.net/forum?id=w8rZ2Jd6Jo&referrer=%5BAuthor%20Console%5D(%2Fgroup%3Fid%3DICLR.cc%2F2026%2FConference%2FAuthors%23your-submissions)) is accepted by ICLR 2026
 - **2025.10** - Project launch with core architecture and initial evaluation tasks
 - **Continuous Updates** - New research tasks and agent implementations welcome
 
